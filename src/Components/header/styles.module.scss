@@ -1,4 +1,33 @@
 .header{
-    margin: 40px;
-    border: solid;
+    padding-left: 60px;
+    padding-top: 20px;
+    padding-right: 60px;
+    padding-bottom: 20px;
+    background-color: var(--bs-body-bg);
 }
+
+
+@media (min-width: 992px)
+{.header {
+    flex: 0 0 auto;
+}
+}
+
+.search {
+    height: 56px;
+    position: relative;
+    z-index: 98;
+    input {
+      width: 100%;
+      height: 56px;
+    }   
+    .filter_button {
+      position: absolute;
+      top: 9px;
+      right: 10px;
+      border: none;
+      background-color: transparent;
+      outline: none;
+      cursor: pointer;
+    }
+  }

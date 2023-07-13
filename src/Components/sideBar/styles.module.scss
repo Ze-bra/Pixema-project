@@ -1,0 +1,32 @@
+.sideBar {
+  width: 180px;
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  margin-top: 120px;
+  margin-left: 10px;
+  position: fixed;
+}
+
+.navTabs {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0 40px;
+  position: relative;
+  color: #80858B;
+  padding-top: 30px;
+
+  &:hover {
+    color: #7B61FF;
+    cursor: pointer;
+  }
+
+
+}
+
+.activeLink {
+  color: #7B61FF;
+  transition: .3s;
+}

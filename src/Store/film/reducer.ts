@@ -1,20 +1,20 @@
-import { AllFields, MovieDocsResponseDtoV13, MovieFields } from "@openmoviedb/kinopoiskdev_client"
+import { AllFields, MovieDocsResponseDtoV13, MovieFields, PossibleValueDto } from "@openmoviedb/kinopoiskdev_client"
 import { FilmListConstants } from "../../Constants/FilmListConstants"
 export const FilmActionName = {
     LOAD_FILMS: "LOAD_FILMS",
     SET_SEARCH_VALUE: "SET_SEARCH_VALUE",
     CLEAR_SEARCH: "CLEAR_SEARCH",
-    LOAD_MORE_FILMS: "LOAD_MORE_FILMS"
+    LOAD_MORE_FILMS: "LOAD_MORE_FILMS",
 } as const
 
 export type FilmsSearchFilterType = {
     filmListType: string
     page: number
     limit: number
-    year: [number, number] | undefined
-    rating: [number, number] | undefined
+    year: [number, number]
+    rating: [number, number]
     country: string | undefined
-    genres: string[] | undefined
+    genres: string[]
     searchterm: string | undefined
     sortingField: AllFields<MovieFields> | undefined
 }
@@ -23,16 +23,16 @@ export type FilmsPageType = {
     items: MovieDocsResponseDtoV13
 }
 
-const filtersInitialValue: FilmsSearchFilterType = {
+export const filtersInitialValue: FilmsSearchFilterType = {
     page: 1,
     limit: 10,
     country: undefined,
     filmListType: FilmListConstants.Default,
-    genres: undefined,
-    rating: undefined,
+    genres: [],
+    rating: [0, 10],
     searchterm: undefined,
-    sortingField: undefined,
-    year: undefined
+    sortingField: 'rating.kp',
+    year: [new Date().getFullYear() - 3, new Date().getFullYear()],
 }
 
 const initialValue: FilmsPageType = {
@@ -50,7 +50,7 @@ export const FilmsReducer = (state: FilmsPageType = initialValue, action: FilmAc
         case FilmActionName.SET_SEARCH_VALUE:
             return {
                 ...state,
-                filter: action.payload as FilmsSearchFilterType
+                filter: action.payload === undefined ? filtersInitialValue : action.payload as FilmsSearchFilterType
             }
         case FilmActionName.LOAD_FILMS:
             return {
@@ -69,10 +69,7 @@ export const FilmsReducer = (state: FilmsPageType = initialValue, action: FilmAc
                     docs: [...state.items.docs, ...data.docs]
                 },
             }
-        case FilmActionName.CLEAR_SEARCH:
-            return {
-                ...initialValue
-            }
+
         default:
             return state
     }

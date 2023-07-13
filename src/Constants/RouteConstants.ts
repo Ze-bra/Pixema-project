@@ -4,5 +4,6 @@ export const RoutesConstants = {
     SignUp: "/signup",
     SignUpConfirmation: "/signUpConfirmation",
     Activation: "/activation",
-    ActivationSuccess: "/activationSuccess"
+    ActivationSuccess: "/activationSuccess",
+    Film: "/film"
 } as const

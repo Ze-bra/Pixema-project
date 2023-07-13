@@ -1,21 +1,25 @@
 import { Outlet } from "react-router-dom";
 import Header from "../../Components/header";
-import styles from './styles.module.scss';
+import SideBar from "../../Components/sideBar";
+import styles from './styles.module.scss'
+import { Col, Container, Row } from "react-bootstrap";
+
 //import AsideMenu from "../AsideMenu";
 
 const Layout = () => {
   return (
 
-    <div className={["bg-dark", styles.app].join(' ')}>
-      <Header />
-      <div className={styles.content}>
-        <Outlet />
-      </div>
-        
-      {/* <AsideMenu />
-      <Footer /> */}
-    </div>
-
+    <Container fluid={true} className="overflow-auto">
+      <Row className="">
+        <Col sm="2" className="d-none d-lg-flex sticky-top">
+          <SideBar />
+        </Col>
+        <Col className="overflow-auto h-100">
+          <Header />
+          <Outlet />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
