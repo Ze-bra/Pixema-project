@@ -1,35 +1,28 @@
-
 import { ActionMeta, MultiValue } from 'react-select';
 import Select from 'react-select'
-import makeAnimated from 'react-select/animated';
-
-export type SelectOptionType = {
-  value: string;
-  label: string;
-};
-
-
-
-
-
+import { SelectOptionType } from '../../Type/SelectOptionType';
 
 const SelectElement = (props: {
-  options: SelectOptionType[], value: SelectOptionType[],
-  onChange: (newValue: MultiValue<SelectOptionType>, actionMeta: ActionMeta<SelectOptionType>) => void
+  options: SelectOptionType[],
+  value: SelectOptionType[],
+  onChange: (
+    newValue: MultiValue<SelectOptionType>,
+    actionMeta: ActionMeta<SelectOptionType>
+  ) => void
 }) => {
-  const animatedComponents = makeAnimated();
 
   //https://react-select.com/styles
   //https://github.com/JedWatson/react-select/issues/2345
   return (
 
     <Select
-      closeMenuOnSelect={false} defaultValue={props.value}
+      closeMenuOnSelect={false}
+      defaultValue={props.value}
       onChange={props.onChange}
-      isMulti={true} options={props.options}
+      isMulti={true}
+      options={props.options}
       theme={(theme) => ({
         ...theme,
-
         colors: {
           ...theme.colors,
           primary: "var(--bs-primary)",
@@ -47,9 +40,8 @@ const SelectElement = (props: {
           fontWeight: "400",
           padding: "0.375rem 0.375rem 0.375rem 0.75rem",
           minHeight: `42px`,
-          ':hover': {
-            borderColor: "var(--bs-select-focus-border-color)",
-          },
+          ':hover':
+            { borderColor: "var(--bs-select-focus-border-color)" }
         }),
         singleValue: ({ marginLeft, marginRight, ...provided }, { isDisabled }) => ({
           ...provided,
@@ -73,7 +65,6 @@ const SelectElement = (props: {
         option: (provided, state) => ({
           ...provided,
           margin: `2px`,
-
         }),
         menu: ({ marginTop, ...provided }, state) => ({
           ...provided,
@@ -82,25 +73,24 @@ const SelectElement = (props: {
         multiValue: (provided, state) => ({
           ...provided,
           margin: `2px`,
-
         }),
         clearIndicator: ({ padding, ...provided }, state) => ({
           ...provided,
           alignItems: "center",
           justifyContent: "center",
           height: "100%",
-          width: "var(--bs-select-indicator-padding)"
+          width: "var(--bs-select-indicator-padding)",
         }),
         multiValueLabel: ({ padding, paddingLeft, fontSize, ...provided }, state) => ({
           ...provided,
           padding: `0 2px`,
-          whiteSpace: "normal"
+          whiteSpace: "normal",
         }),
         indicatorSeparator: ({ padding, ...provided }, state) => ({
-          display: "none"
+          display: "none",
         }),
-      }} />
-
+      }}
+    />
   )
 }
 
