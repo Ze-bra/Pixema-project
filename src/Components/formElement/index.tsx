@@ -1,14 +1,12 @@
 import { FormElementType } from '../../Type/FormElementType';
 
-function FormElement(props: FormElementType): JSX.Element {
-
+const FormElement = (props: FormElementType): JSX.Element => {
     let input = <input
         onChange={props.onChangeFunction}
         name={props.name}
         type={props.type}
         placeholder={props.placeholder}
         className="form-control  bg-secondary border-0" />;
-
     if (props.component == 'TextArea') {
         input = <textarea
             name={props.name}

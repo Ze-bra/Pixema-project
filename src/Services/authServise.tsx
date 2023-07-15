@@ -1,6 +1,5 @@
 const authBaseUrl = 'https://studapi.teachmeskills.by/auth/';
 
-//регистрация
 export const Registration = async (username: string, email: string, password: string) => {
     const url = (`${authBaseUrl}users/`)
     const option = {
@@ -19,7 +18,6 @@ export const Registration = async (username: string, email: string, password: st
     try {
         const response = await fetch(request)
         const result = await response.json()
-
         return {
             ok: response.ok,
             status: response.status,
@@ -34,7 +32,6 @@ export const Registration = async (username: string, email: string, password: st
     }
 }
 
-//активация после регистрации
 export const Activation = async (uid: string, token: string) => {
     const url = (`${authBaseUrl}/users/activation/`)
     const option = {
@@ -51,11 +48,9 @@ export const Activation = async (uid: string, token: string) => {
 
     try {
         const response = await fetch(request)
-
         return {
             ok: response.ok,
             status: response.status,
-
         }
     } catch (error: any) {
         return {
@@ -65,7 +60,6 @@ export const Activation = async (uid: string, token: string) => {
         }
     }
 }
-
 
 export const Login = async (email: string, password: string) => {
     const url = (`${authBaseUrl}/jwt/create`)
@@ -84,7 +78,6 @@ export const Login = async (email: string, password: string) => {
     try {
         const response = await fetch(request)
         const result = await response.json()
-
         return {
             ok: response.ok,
             status: response.status,
@@ -116,7 +109,6 @@ export const RefreshTocken = async (refresh: string) => {
     try {
         const response = await fetch(request)
         const result = await response.json()
-
         return {
             ok: response.ok,
             status: response.status,
@@ -146,7 +138,6 @@ export const GetUserName = async (token: string | undefined) => {
     try {
         const response = await fetch(request)
         const result = await response.json()
-
         return {
             ok: response.ok,
             status: response.status,

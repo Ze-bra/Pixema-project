@@ -1,29 +1,34 @@
-
 import { Activation, Registration } from "../../Services/authServise"
 import { AppThunk } from ".."
 import { ResponseErrorsType } from "../../Type/ResponseErrorsType"
-import { UserRegistrtionType } from "../../Type/UserInfoType"
+import { UserRegistrtionType } from "../../Type/UserInfoTypes"
 
 export const RegistrationActionName = {
     REGISTRATION_SUCCESS: "REGISTRATION_SUCCESS",
     REGISTRATION_FAIL: "REGISTRATION_FAIL"
 } as const
 
-const registrationSuccess = (user: UserRegistrtionType) => {
+export const registrationSuccessAction = (user: UserRegistrtionType) => {
     return {
         type: RegistrationActionName.REGISTRATION_SUCCESS,
         payload: user
     }
 }
 
-const registrationFail = (errors: ResponseErrorsType | string) => {
+export const registrationFailAction = (errors: ResponseErrorsType | string) => {
     return {
         type: RegistrationActionName.REGISTRATION_FAIL,
         payload: errors
     }
 }
 
-export const registrationAction = (username: string, email: string, password: string, cb?: () => void, failedCb?: (data: any) => void): AppThunk => {
+export const registrationAction = (
+    username: string,
+    email: string,
+    password: string,
+    cb?: () => void,
+    failedCb?: (data: any) => void
+): AppThunk => {
     return (dispatch) => {
         Registration(username, email, password)
             .then(response => {
@@ -31,10 +36,9 @@ export const registrationAction = (username: string, email: string, password: st
                     if (failedCb) {
                         failedCb(response.data);
                     }
-                    return dispatch(!response.ok ? registrationFail(response.data) : registrationFail("Неизвестная ошибка"))
+                    return dispatch(!response.ok ? registrationFailAction(response.data) : registrationFailAction("Неизвестная ошибка"))
                 }
-
-                dispatch(registrationSuccess(response.data))
+                dispatch(registrationSuccessAction(response.data))
                 if (cb) {
                     cb()
                 }
@@ -46,12 +50,10 @@ export const activationAction = (uid: string, token: string, cb?: () => void): A
     return (dispatch) => {
         Activation(uid, token)
             .then(response => {
-
                 if (!response.ok) {
                     console.log(response)
                     return
                 }
-
                 if (cb) {
                     cb()
                 }

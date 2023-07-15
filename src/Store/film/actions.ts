@@ -1,7 +1,13 @@
 import { AppThunk } from ".."
-import { getCountries, getFilms, getGenres } from "../../Services/filmServise"
-import { FilmActionName, FilmsSearchFilterType } from "./reducer"
+import { getFilms} from "../../Services/filmServise"
+import { FilmsSearchFilterType } from "../../Type/FilmsTypes"
 
+export const FilmActionName = {
+    LOAD_FILMS: "LOAD_FILMS",
+    SET_SEARCH_VALUE: "SET_SEARCH_VALUE",
+    CLEAR_SEARCH: "CLEAR_SEARCH",
+    LOAD_MORE_FILMS: "LOAD_MORE_FILMS",
+} as const
 
 export const loadFilmsAction = (): AppThunk => {
     return (dispatch, getState) => {
@@ -24,12 +30,11 @@ export const loadFilmsAction = (): AppThunk => {
     }
 }
 
-
-export const setFilter = (filter: FilmsSearchFilterType | undefined): AppThunk => {
-    return (dispatch, getState) => {
+export const setFilterAction = (filter: FilmsSearchFilterType | undefined): AppThunk => {
+    return (dispatch) => {
         dispatch({
-            type:  FilmActionName.SET_SEARCH_VALUE,
-            payload: filter === undefined ? undefined: {
+            type: FilmActionName.SET_SEARCH_VALUE,
+            payload: filter === undefined ? undefined : {
                 ...filter,
                 page: 1,
             }
@@ -37,8 +42,6 @@ export const setFilter = (filter: FilmsSearchFilterType | undefined): AppThunk =
         dispatch(loadFilmsAction())
     }
 }
-
-
 
 export const changePageAction = (): AppThunk => {
     return (dispatch, getState) => {

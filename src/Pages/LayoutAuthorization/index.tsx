@@ -7,9 +7,7 @@ import styles from './styles.module.scss'
 
 const LayoutAuthorization = () => {
   return (
-
     <Outlet />
-
   );
 };
 

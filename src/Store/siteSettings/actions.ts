@@ -1,17 +1,15 @@
 import { AppThunk } from ".."
-import { getCountries, getFilms, getGenres } from "../../Services/filmServise"
-import { SiteSettingsActionName } from "./reducer"
 
+export const SiteSettingsActionName = {
+    SAVE_THEME: "SAVE_THEME"
+} as const
 
-
-
-export const saveTheme = (theme: string): AppThunk => {
-    return (dispatch, getState) => {
+export const saveThemeAction = (theme: string): AppThunk => {
+    return (dispatch) => {
         dispatch({
             type: SiteSettingsActionName.SAVE_THEME,
             payload: theme
         })
-
     }
 }
 

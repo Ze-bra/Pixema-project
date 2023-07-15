@@ -1,7 +1,7 @@
 import { RegisterActionType } from "../../Type/RegisterActionType";
 import { RegisterUserStateType } from "../../Type/RegisterUserStateType";
 import { ResponseErrorsType } from "../../Type/ResponseErrorsType";
-import { UserRegistrtionType } from "../../Type/UserInfoType";
+import { UserRegistrtionType } from "../../Type/UserInfoTypes";
 import { RegistrationActionName } from "./actions";
 
 const initValue: RegisterUserStateType = {

@@ -10,7 +10,6 @@ body {
   font-family: 'Exo 2';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
 }
 
 #root {
@@ -30,18 +29,15 @@ code {
       rgba(0, 0, 0, 0.6),
       rgba(0, 0, 0, 0.0)),
     url('Content/img/background.png');
-    background-size: cover;
+  background-size: cover;
 }
 
-
 .btn-primary {
- 
   background-color: #7b61ff;
   border-color: #917cff;
 }
 
 .btn-primary:hover {
- 
   background-color: #917cff;
   border-color: #7b61ff;
 }

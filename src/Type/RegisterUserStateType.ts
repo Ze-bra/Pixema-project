@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { ResponseErrorsType } from "./ResponseErrorsType";
-import { UserInfoType, UserRegistrtionType } from "./UserInfoType";
+import { UserRegistrtionType } from "./UserInfoTypes";
 
 export type RegisterUserStateType = {
     email?: ReactNode;

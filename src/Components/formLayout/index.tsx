@@ -4,7 +4,6 @@ const FormLayout = (props: FormLayoutType) => {
 
     return (
         <>
-
             <div className="row">
                 <div className="col ">
                     <h2>{props.title}</h2>

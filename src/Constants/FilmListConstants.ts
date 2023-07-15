@@ -1,5 +1,5 @@
 export const FilmListConstants = {
     Favorites: "favorites",
     Trends: "trends",
-    Default: "default",
+    Main: "main",
 } as const

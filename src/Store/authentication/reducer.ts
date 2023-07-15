@@ -2,9 +2,8 @@ import { AuthActionType } from '../../Type/AuthActionType';
 import { AuthUserStateType } from '../../Type/AuthUserStateType';
 import { ResponseErrorsType } from '../../Type/ResponseErrorsType';
 import { TokensType } from '../../Type/TokensType';
-import { UserInfoType } from '../../Type/UserInfoType';
+import { UserInfoType } from '../../Type/UserInfoTypes';
 import { AuthActionName } from './actions';
-
 
 const initValue: AuthUserStateType = {
     isAuthenticated: false,
@@ -33,7 +32,6 @@ export const AuthReducer = (state: AuthUserStateType = initValue, action: AuthAc
                 ...state,
                 user: action.payload as (UserInfoType)
             }
-
         default:
             return state
     }

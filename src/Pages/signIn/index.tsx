@@ -14,8 +14,8 @@ const SingIn = () => {
     const navigate = useNavigate()
 
     const [form, setForm] = useState<SignInFormType>({
-        email: '',
-        password: ''
+        email: "",
+        password: ""
     })
 
     const [formErrors, setFormErrors] = useState<Partial<SignInFormType>>({})
@@ -27,7 +27,6 @@ const SingIn = () => {
             email: (errors?.detail ?? "") + (errors?.email?.join("; ") ?? ""),
             password: errors?.password?.join("; "),
         })
-
     }, [errors])
 
     const onChangeFormElement = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -43,8 +42,8 @@ const SingIn = () => {
         const { email, password } = form
         setFormErrors({
             ...formErrors,
-            password: !password ? 'Password is requed' : "",
-            email: !email ? 'email is requed' : "",
+            password: !password ? "Password is requed" : "",
+            email: !email ? "email is requed" : "",
         })
 
         if (email && password) {
@@ -52,38 +51,34 @@ const SingIn = () => {
         }
     }
 
-
     return (
         <div className="form-body d-flex align-items-center justify-content-center ">
             <div className="col-lg-4 col-md-6 col-sm-8 col-xs-10 border-0 bg-dark rounded p-3">
                 <FormLayout
-                    title={'Sign In'}
-                >
-                    <form onSubmit={onFormSubmit} className="">
+                    title={"Sign In"}>
+                    <form onSubmit={onFormSubmit}>
                         <div className="row">
                             <div className="col">
                                 <FormElement onChangeFunction={onChangeFormElement}
-                                    name={'email'}
-                                    type={'text'}
-                                    placeholder={'Your email'}
-                                    label={'Email'}
-                                    value={''}
-                                    component='TextBox'
-                                    error={formErrors.email}
-                                />
+                                    name={"email"}
+                                    type={"text"}
+                                    placeholder={"Your email"}
+                                    label={"Email"}
+                                    value={""}
+                                    component="TextBox"
+                                    error={formErrors.email} />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col">
                                 <FormElement onChangeFunction={onChangeFormElement}
-                                    name={'password'}
-                                    type={'password'}
-                                    placeholder={'Your password'}
-                                    label={'Password'}
-                                    value={''}
-                                    component='TextBox'
-                                    error={formErrors.password}
-                                />
+                                    name={"password"}
+                                    type={"password"}
+                                    placeholder={"Your password"}
+                                    label={"Password"}
+                                    value={""}
+                                    component="TextBox"
+                                    error={formErrors.password} />
                             </div>
                         </div>
                         <div className="row">
@@ -105,10 +100,6 @@ const SingIn = () => {
                 </FormLayout >
             </div>
         </div>
-
-
-
-
     )
 }
 

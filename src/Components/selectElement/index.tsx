@@ -1,20 +1,12 @@
-import { ActionMeta, MultiValue } from 'react-select';
 import Select from 'react-select'
-import { SelectOptionType } from '../../Type/SelectOptionType';
+import { SelectElementType } from '../../Type/SelectElementType';
 
-const SelectElement = (props: {
-  options: SelectOptionType[],
-  value: SelectOptionType[],
-  onChange: (
-    newValue: MultiValue<SelectOptionType>,
-    actionMeta: ActionMeta<SelectOptionType>
-  ) => void
-}) => {
+//https://react-select.com/styles
+//https://github.com/JedWatson/react-select/issues/2345
 
-  //https://react-select.com/styles
-  //https://github.com/JedWatson/react-select/issues/2345
+const SelectElement = (props: SelectElementType) => {
+
   return (
-
     <Select
       closeMenuOnSelect={false}
       defaultValue={props.value}
@@ -89,8 +81,7 @@ const SelectElement = (props: {
         indicatorSeparator: ({ padding, ...provided }, state) => ({
           display: "none",
         }),
-      }}
-    />
+      }} />
   )
 }
 

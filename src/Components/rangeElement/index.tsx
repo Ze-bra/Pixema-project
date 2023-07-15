@@ -1,29 +1,35 @@
-
 import { useState } from 'react';
 import { FormControl, InputGroup } from 'react-bootstrap';
 import { Range, getTrackBackground } from 'react-range';
+import { RangeElementType } from '../../Type/RangeElementType';
 
+const RangeElement = (rangeProps: RangeElementType) => {
 
-const RangeElement = (rangeProps: {value:[number,number], min:number, max:number, step:number, roundeCount: number, onChange: (values: [number, number]) => void}) => {
-    const [values, setValues] = useState(rangeProps.value);
-     
-    return (
-      <div
+  const [values, setValues] = useState(rangeProps.value);
+
+  return (
+    <div
       style={{
         display: 'flex',
         justifyContent: 'center',
         flexWrap: 'wrap'
-      }}
-    >
-       <output id="output">
-       <InputGroup >
-           <FormControl className='p-2 text-center' type='text' readOnly value={values[0].toFixed(rangeProps.roundeCount)}></FormControl>
+      }}>
+      <output id="output">
+        <InputGroup >
+          <FormControl
+            className='p-2 text-center'
+            type='text'
+            readOnly value={values[0].toFixed(rangeProps.roundeCount)}>
+          </FormControl>
           <span className="input-group-text">-</span>
-          <FormControl className='p-2 text-center' type='text' readOnly value={values[1].toFixed(rangeProps.roundeCount)}></FormControl>
+          <FormControl
+            className='p-2 text-center'
+            type='text'
+            readOnly value={values[1].toFixed(rangeProps.roundeCount)}>
+          </FormControl>
         </InputGroup>
-       
       </output>
-    <Range
+      <Range
         step={rangeProps.step}
         min={rangeProps.min}
         max={rangeProps.max}
@@ -41,8 +47,7 @@ const RangeElement = (rangeProps: {value:[number,number], min:number, max:number
               height: '36px',
               display: 'flex',
               width: '100%'
-            }}
-          >
+            }}>
             <div
               ref={props.ref}
               style={{
@@ -50,14 +55,13 @@ const RangeElement = (rangeProps: {value:[number,number], min:number, max:number
                 width: '100%',
                 borderRadius: '4px',
                 background: getTrackBackground({
-                  values,                
+                  values,
                   colors: ["#323537", "#7b61ff", "#323537"],
                   min: rangeProps.min,
                   max: rangeProps.max,
                 }),
                 alignSelf: 'center'
-              }}
-            >
+              }}>
               {children}
             </div>
           </div>
@@ -74,22 +78,17 @@ const RangeElement = (rangeProps: {value:[number,number], min:number, max:number
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              
-            }}
-          >
+            }}>
             <div
               style={{
                 height: '5px',
                 width: '5px',
                 backgroundColor: isDragged ? '#548BF4' : '#CCC'
-              }}
-            />
+              }} />
           </div>
-        )}
-      />
-     
+        )} />
     </div>
-    )
+  )
 }
 
 export default RangeElement

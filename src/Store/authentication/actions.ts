@@ -1,14 +1,14 @@
+import { AppThunk } from ".."
+import { GetUserName, Login, RefreshTocken } from "../../Services/authServise"
+import { ResponseErrorsType } from "../../Type/ResponseErrorsType"
+import { TokensType } from "../../Type/TokensType"
+import { UserInfoType } from "../../Type/UserInfoTypes"
 
-import { AppThunk } from '..'
-import { GetUserName, Login, RefreshTocken } from '../../Services/authServise'
-import { ResponseErrorsType } from '../../Type/ResponseErrorsType'
-import { TokensType } from '../../Type/TokensType'
-import { UserInfoType } from '../../Type/UserInfoType'
 export const AuthActionName = {
-    AUTH_SUCCESS: 'AUTH_SUCCESS',
-    AUTH_FAIL: 'AUTH_FAIL',
-    LOGOUT: 'LOGOUT',
-    SET_USER_INFO: 'SET_USER_INFO',
+    AUTH_SUCCESS: "AUTH_SUCCESS",
+    AUTH_FAIL: "AUTH_FAIL",
+    LOGOUT: "LOGOUT",
+    SET_USER_INFO: "SET_USER_INFO",
 } as const
 
 const authSuccess = (tokens: TokensType) => {

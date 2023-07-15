@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, AppState } from '../../Store';
-import { changePageAction, loadFilmsAction, setFilter } from '../../Store/film/actions';
+import { changePageAction, loadFilmsAction, setFilterAction } from '../../Store/film/actions';
 import FilmCard from '../../Components/filmCard';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import styles from './styles.module.scss';
@@ -16,35 +16,40 @@ function Films() {
     const films = useSelector((state: AppState) => state.films)
 
     useEffect(() => {
-
-        dispatch(setFilter({ ...films.filter, filmListType: params.listType ?? FilmListConstants.Default }))
+        dispatch(setFilterAction({
+            ...films.filter,
+            filmListType: params.listType ?? FilmListConstants.Main
+        }))
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, [params])
 
     useEffect(() => {
-
         dispatch(loadFilmsAction());
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, [])
 
-    const filmsItems = films.items.docs ? films.items.docs.map((item) =>
-        <Col >
-            <FilmCard film={item} key={item.id} />
-        </Col>
-
-    ) : "";
+    const filmsItems = films.items.docs ? films.items.docs
+        .map((item) =>
+            <Col >
+                <FilmCard
+                    film={item}
+                    key={item.id} />
+            </Col>
+        ) : "";
 
     if (!films.items.docs) {
         return (<></>);
     }
 
     return (
-        <div className={styles.films_container}>
+        <div className={styles.filmsContainer}>
             <InfiniteScroll
                 dataLength={films.items.docs.length} //This is important field to render the next data
                 next={() => dispatch(changePageAction())}
                 hasMore={true}
-                loader={<h4>Loading...</h4>}
+                loader={
+                    <h4>Loading...</h4>
+                }
                 endMessage={
                     <p style={{ textAlign: 'center' }}>
                         <b>Yay! You have seen it all</b>

@@ -5,7 +5,7 @@ import { FilmListConstants } from "../../Constants/FilmListConstants"
 import { RoutesConstants } from "../../Constants/RouteConstants"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, AppState } from "../../Store"
-import { saveTheme } from "../../Store/siteSettings/actions"
+import { saveThemeAction } from "../../Store/siteSettings/actions"
 
 const SideBar = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -16,10 +16,10 @@ const SideBar = () => {
 
   const handleToggleTheme = () => {
     if (themeState == "dark") {
-      dispatch(saveTheme("light"));
+      dispatch(saveThemeAction("light"));
       return;
     }
-    dispatch(saveTheme("dark"));
+    dispatch(saveThemeAction("dark"));
   };
 
   return (
@@ -27,15 +27,28 @@ const SideBar = () => {
       <div>
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="row gy-5">
-            <Link className={[styles.navTabs, (params.listType === undefined || params.listType === FilmListConstants.Default ? styles.activeLink : "")].join(' ')} to={RoutesConstants.Home + FilmListConstants.Default}>Главная</Link>
+            <Link
+              className={[styles.navTabs, (params.listType === undefined || params.listType === FilmListConstants.Main ? styles.activeLink : "")].join(' ')}
+              to={RoutesConstants.Home + FilmListConstants.Main}>
+              Главная
+            </Link>
           </li>
           <li className="row gy-5">
-            <Link className={[styles.navTabs, (params.listType && params.listType === FilmListConstants.Trends ? styles.activeLink : "")].join(' ')} to={RoutesConstants.Home + FilmListConstants.Trends}>Тренды</Link>
+            <Link
+              className={[styles.navTabs, (params.listType && params.listType === FilmListConstants.Trends ? styles.activeLink : "")].join(' ')}
+              to={RoutesConstants.Home + FilmListConstants.Trends}>
+              Тренды
+            </Link>
           </li>
         </ul>
       </div>
       <div className="nav-item">
-        <Button variant="primary" className="shadow w-100 m-3" onClick={handleToggleTheme}>Переключить тему</Button>
+        <Button
+          variant="primary"
+          className="shadow w-100 m-3"
+          onClick={handleToggleTheme}>
+          Переключить тему
+        </Button>
       </div>
     </div>
   )
