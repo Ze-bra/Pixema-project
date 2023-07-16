@@ -8,6 +8,7 @@ import FormElement from "../../Components/formElement"
 import FormButton from "../../Components/formButton"
 import { loginAction } from "../../Store/authentication/actions"
 import { AppDispatch, AppState } from "../../Store"
+import styles from "../LayoutAuthorization/styles.module.scss";
 
 const SingIn = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -53,13 +54,14 @@ const SingIn = () => {
 
     return (
         <div className="form-body d-flex align-items-center justify-content-center ">
-            <div className="col-lg-4 col-md-6 col-sm-8 col-xs-10 border-0 bg-dark rounded p-3">
+            <div className={[styles.box, "col-lg-4 col-md-6 col-sm-8 col-xs-10 border-0 rounded p-3"].join(" ")}>
                 <FormLayout
                     title={"Sign In"}>
                     <form onSubmit={onFormSubmit}>
                         <div className="row">
                             <div className="col">
-                                <FormElement onChangeFunction={onChangeFormElement}
+                                <FormElement
+                                    onChangeFunction={onChangeFormElement}
                                     name={"email"}
                                     type={"text"}
                                     placeholder={"Your email"}
@@ -89,9 +91,9 @@ const SingIn = () => {
                             </div>
                         </div>
                         <div className="row mb-3">
-                            <div className="col ">
+                            <div className="col">
                                 Don’t have an account?
-                                <Link to={RoutesConstants.SignUp} className="ml - 2 text-decoration-none">
+                                <Link to={RoutesConstants.SignUp} className="ml-2 text-decoration-none ms-2">
                                     Sign Up
                                 </Link>
                             </div>

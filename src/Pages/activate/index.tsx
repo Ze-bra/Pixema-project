@@ -7,6 +7,7 @@ import FormLayout from "../../Components/formLayout"
 import FormElement from "../../Components/formElement"
 import FormButton from "../../Components/formButton"
 import { RoutesConstants } from "../../Constants/RouteConstants"
+import styles from "../LayoutAuthorization/styles.module.scss";
 
 export const ActivatePage = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -26,7 +27,7 @@ export const ActivatePage = () => {
 
     return (
         <div className="form-body d-flex align-items-center justify-content-center ">
-            <div className="col-lg-6 col-md-8 col-sm-10 col-xs-12 border-0 bg-dark rounded p-3">
+            <div className={[styles.box, "col-lg-6 col-md-8 col-sm-10 col-xs-12 border-0 rounded p-3"].join(" ")}>
                 <FormLayout
                     title={"Activation work around"}>
                     <form className="">

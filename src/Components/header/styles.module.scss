@@ -32,3 +32,22 @@
     cursor: pointer;
   }
 }
+
+.userName {
+  text-overflow: ellipsis;
+  display: flex;
+  overflow: hidden;
+  height: 56px;
+}
+
+
+.userNameLetter {
+  line-height: 43px;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+.userNameWord {
+  line-height: 56px;
+}

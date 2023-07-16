@@ -1,4 +1,4 @@
-import { MovieDocsResponseDtoV13} from "@openmoviedb/kinopoiskdev_client"
+import { MovieDocsResponseDtoV13 } from "@openmoviedb/kinopoiskdev_client"
 import { FilmListConstants } from "../../Constants/FilmListConstants"
 import { FilmActionName } from "./actions"
 import { FilmActionType, FilmsPageType, FilmsSearchFilterType } from "../../Type/FilmsTypes"
@@ -13,6 +13,7 @@ export const filtersInitialValue: FilmsSearchFilterType = {
     searchterm: undefined,
     sortingField: 'rating.kp',
     year: [new Date().getFullYear() - 3, new Date().getFullYear()],
+    showFilters: true
 }
 
 const initialValue: FilmsPageType = {

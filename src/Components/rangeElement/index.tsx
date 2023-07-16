@@ -6,7 +6,7 @@ import { RangeElementType } from '../../Type/RangeElementType';
 const RangeElement = (rangeProps: RangeElementType) => {
 
   const [values, setValues] = useState(rangeProps.value);
-
+  //https://github.com/tajo/react-range
   return (
     <div
       style={{

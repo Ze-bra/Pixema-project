@@ -1,13 +1,17 @@
 import { Outlet } from "react-router-dom";
-import Header from "../../Components/header";
-import SideBar from "../../Components/sideBar";
-import styles from './styles.module.scss'
-
-//import AsideMenu from "../AsideMenu";
+import Logo from "../../Components/logo";
+import { RoutesConstants } from "../../Constants/RouteConstants";
+import styles from "./styles.module.scss";
 
 const LayoutAuthorization = () => {
   return (
-    <Outlet />
+    <>
+      <a href={RoutesConstants.Home}
+        className={[styles.logo, "d-flex align-items-center mb-3 mb-md-0 me-md-auto"].join(" ")}>
+        <Logo swithColorTheme={false}></Logo>
+      </a>
+      <Outlet />
+    </>
   );
 };
 

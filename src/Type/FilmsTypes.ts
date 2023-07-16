@@ -10,6 +10,7 @@ export type FilmsSearchFilterType = {
     genres: string[]
     searchterm: string | undefined
     sortingField: AllFields<MovieFields> | undefined
+    showFilters: boolean
 }
 
 export type FilmsPageType = {

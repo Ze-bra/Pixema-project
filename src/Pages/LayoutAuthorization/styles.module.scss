@@ -1,19 +1,8 @@
-.main {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 100vh;
-    height: -webkit-fill-available;
-    max-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
+.logo {
+    position: absolute;
+    margin: 28px 60px;
 }
 
-.content {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 100vh;
-    height: -webkit-fill-available;
-    max-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
+.box {
+    background-color: var(--bs-body-bg);
 }

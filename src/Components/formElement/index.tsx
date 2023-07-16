@@ -6,13 +6,13 @@ const FormElement = (props: FormElementType): JSX.Element => {
         name={props.name}
         type={props.type}
         placeholder={props.placeholder}
-        className="form-control  bg-secondary border-0" />;
+        className="form-control" />;
     if (props.component == 'TextArea') {
         input = <textarea
             name={props.name}
             onChange={props.onChangeFunction}
             placeholder={props.placeholder}
-            className="form-control  bg-secondary border-0" />
+            className="form-control" />
     }
 
     return (

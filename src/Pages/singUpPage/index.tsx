@@ -8,6 +8,7 @@ import FormLayout from "../../Components/formLayout"
 import FormElement from "../../Components/formElement"
 import FormButton from "../../Components/formButton"
 import { RoutesConstants } from "../../Constants/RouteConstants"
+import styles from "../LayoutAuthorization/styles.module.scss";
 
 const SingUp = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -60,7 +61,7 @@ const SingUp = () => {
 
   return (
     <div className="form-body d-flex align-items-center justify-content-center ">
-      <div className="col-lg-4 col-md-6 col-sm-8 col-xs-10 border-0 bg-dark rounded p-3">
+      <div className={[styles.box, "col-lg-4 col-md-6 col-sm-8 col-xs-10 border-0 rounded p-3"].join(" ")}>
         <FormLayout
           title={"Sign Up"} >
           <form onSubmit={onFormSubmit}>
@@ -127,7 +128,7 @@ const SingUp = () => {
                 Already have an account?
                 <Link
                   to={RoutesConstants.SignIn}
-                  className="ml-2 text-decoration-none">
+                  className="ml-2 text-decoration-none ms-2">
                   Sign In
                 </Link>
               </div>

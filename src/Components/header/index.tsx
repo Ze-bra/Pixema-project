@@ -13,10 +13,8 @@ import { loadDictionariesAction } from "../../Store/dictionary/actions"
 import RangeElement from "../rangeElement"
 import SelectElement from "../selectElement"
 import { SelectOptionType } from "../../Type/SelectOptionType"
-import pixema2 from "../../Content/img/pixema2.png"
-import pixema1 from "../../Content/img/pixema1.png"
-import AsideFilterMenu from "../asideFilterMenu"
 import { FilmsSearchFilterType } from "../../Type/FilmsTypes"
+import Logo from "../logo"
 
 const Header = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -36,16 +34,7 @@ const Header = () => {
 
   const [form, setForm] = useState<FilmsSearchFilterType>(filtersState.filter)
   const [showFilters, setShowFilters] = useState(false);
-  const [logoSrc, setLogoSrc] = useState(pixema2);
 
-  useEffect(() => {
-    if (themeState == "dark") {
-      setLogoSrc(pixema2);
-    }
-    else {
-      setLogoSrc(pixema1);
-    }
-  }, [themeState])
   //
   const handleCloseFilters = () => {
     setShowFilters(false)
@@ -105,16 +94,31 @@ const Header = () => {
     navigate(RoutesConstants.Home);
   }
 
+
+  const getCutedName = function (userName: string | undefined) {
+
+    if (!userName)
+      return " ";
+
+    let splitedUserName = userName.split(" ");
+    if (splitedUserName.length > 1) {
+      return (splitedUserName[0].substring(0, 1) + splitedUserName[1].substring(0, 1)).toUpperCase();
+
+    }
+
+    return splitedUserName[0].substring(0, 2).toUpperCase();
+  }
+
   return (
     <>
       <nav className={[styles.header, "fixed-top"].join(" ")}>
         <Row className="navbar text-right">
           <Col lg="2" sm="12" className="align-self-start">
-            <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto">
-              <img src={logoSrc} className="fs-4" />
+            <a href={RoutesConstants.Home} className="d-flex align-items-center mb-3 mb-md-0 me-md-auto">
+              <Logo swithColorTheme={true}></Logo>
             </a>
           </Col>
-          <Col lg="9" sm="10" xs="10">
+          <Col lg="8" sm="9" xs="9">
             <Form className={[styles.search, "flex-grow-1"].join(" ")}>
               <Form.Control
                 type="text"
@@ -122,32 +126,34 @@ const Header = () => {
                 onChange={handleSearchValueChangeHeader}
                 onClick={handleCloseFilters}
                 value={form.searchterm} />
-              <Button
-                className={styles.filter_button}
-                onClick={handleShowFilters} >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"  >
-                  <path
-                    d="M5 6L19 6M10 12H19M14 18H19"
-                    stroke="#AFB2B6"
-                    strokeWidth="2"
-                    strokeLinecap="round" />
-                  {
-                    (form.searchterm != filtersInitialValue.searchterm
-                      || form.country != filtersInitialValue.country
-                      || form.genres != filtersInitialValue.genres
-                      || form.year != filtersInitialValue.year
-                      || form.rating != filtersInitialValue.rating
-                      || form.sortingField != filtersInitialValue.sortingField)
-                    &&
-                    <circle cx="3" cy="19" r="3" fill="#7B61FF" />
-                  }
-                </svg>
-              </Button>
+              {authentificationState.isAuthenticated &&
+                <Button
+                  className={styles.filter_button}
+                  onClick={handleShowFilters} >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"  >
+                    <path
+                      d="M5 6L19 6M10 12H19M14 18H19"
+                      stroke="#AFB2B6"
+                      strokeWidth="2"
+                      strokeLinecap="round" />
+                    {
+                      (form.searchterm != filtersInitialValue.searchterm
+                        || form.country != filtersInitialValue.country
+                        || form.genres != filtersInitialValue.genres
+                        || form.year != filtersInitialValue.year
+                        || form.rating != filtersInitialValue.rating
+                        || form.sortingField != filtersInitialValue.sortingField)
+                      &&
+                      <circle cx="3" cy="19" r="3" fill="#7B61FF" />
+                    }
+                  </svg>
+                </Button>
+              }
             </Form>
             <div>
               {form.searchterm != filtersInitialValue.searchterm
@@ -205,22 +211,23 @@ const Header = () => {
               }
             </div>
           </Col>
-          <Col lg="1" sm="2" xs="2" className="align-self-start">
+          <Col lg="2" sm="3" xs="3" className="align-self-start">
             <div>
               {!authentificationState.isAuthenticated &&
                 <Link to={RoutesConstants.SignIn} className="btn btn-primary text-right"> Войти</Link>
               }
               {authentificationState.isAuthenticated &&
-                <span>
-                  {authentificationState.user?.username ?? authentificationState.user?.email}
-                </span>
+                <div className={styles.userName}>
+                  <span className={[styles.userNameLetter, "btn btn-primary"].join(" ")}>{getCutedName(authentificationState.user?.username ?? authentificationState.user?.email)}</span>
+                  <span className={styles.userNameWord}>
+                    {authentificationState.user?.username ?? authentificationState.user?.email}
+                  </span>
+                </div>
               }
             </div>
           </Col>
-
         </Row>
       </nav>
-      {/* <AsideFilterMenu/> */}
       <Offcanvas
         show={showFilters}
         onHide={handleCloseFilters}
@@ -295,6 +302,7 @@ const Header = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Год производства</Form.Label>
+              {/* https://github.com/tajo/react-range */}
               <RangeElement
                 max={new Date().getFullYear()}
                 min={2000}
@@ -305,6 +313,7 @@ const Header = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Рейтинг</Form.Label>
+              {/* https://github.com/tajo/react-range */}
               <RangeElement
                 max={10}
                 min={0}
