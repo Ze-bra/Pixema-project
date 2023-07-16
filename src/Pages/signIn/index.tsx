@@ -91,7 +91,7 @@ const SingIn = () => {
                         <div className="row mb-3">
                             <div className="col ">
                                 Don’t have an account?
-                                <Link to={RoutesConstants.SignUp} className="ml-2">
+                                <Link to={RoutesConstants.SignUp} className="ml - 2 text-decoration-none">
                                     Sign Up
                                 </Link>
                             </div>

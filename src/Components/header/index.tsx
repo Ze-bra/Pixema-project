@@ -109,8 +109,8 @@ const Header = () => {
     <>
       <nav className={[styles.header, "fixed-top"].join(" ")}>
         <Row className="navbar text-right">
-          <Col lg="2" sm="12">
-            <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto  text-decoration-none">
+          <Col lg="2" sm="12" className="align-self-start">
+            <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto">
               <img src={logoSrc} className="fs-4" />
             </a>
           </Col>
@@ -118,7 +118,7 @@ const Header = () => {
             <Form className={[styles.search, "flex-grow-1"].join(" ")}>
               <Form.Control
                 type="text"
-                placeholder="Фильмы и сериалы"
+                placeholder="Поиск..."
                 onChange={handleSearchValueChangeHeader}
                 onClick={handleCloseFilters}
                 value={form.searchterm} />
@@ -205,10 +205,10 @@ const Header = () => {
               }
             </div>
           </Col>
-          <Col lg="1" sm="2" xs="2">
+          <Col lg="1" sm="2" xs="2" className="align-self-start">
             <div>
               {!authentificationState.isAuthenticated &&
-                <Link to={RoutesConstants.SignIn} className="btn btn-primary"> Войти</Link>
+                <Link to={RoutesConstants.SignIn} className="btn btn-primary text-right"> Войти</Link>
               }
               {authentificationState.isAuthenticated &&
                 <span>
@@ -217,6 +217,7 @@ const Header = () => {
               }
             </div>
           </Col>
+
         </Row>
       </nav>
       {/* <AsideFilterMenu/> */}
@@ -225,14 +226,14 @@ const Header = () => {
         onHide={handleCloseFilters}
         placement="end" >
         <Offcanvas.Header closeButton >
-          <Offcanvas.Title className={styles.textColor}>Фильтры</Offcanvas.Title>
+          <Offcanvas.Title>Фильтры</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body >
           <Form onSubmit={onFormSubmit}>
             <Form.Group
               className="mb-3"
               controlId="sortby">
-              <Form.Label className={styles.textColor}>Сортировка по</Form.Label>
+              <Form.Label>Сортировка по</Form.Label>
               <Row>
                 <ToggleButtonGroup
                   type="radio"
@@ -259,7 +260,7 @@ const Header = () => {
             </Form.Group>
             <hr />
             <Form.Group className="mb-3">
-              <Form.Label className={styles.textColor}>Фильм или сериал</Form.Label>
+              <Form.Label>Фильм или сериал</Form.Label>
               <Form.Control
                 className="p-2"
                 placeholder="Фильм или сериал"
@@ -267,7 +268,7 @@ const Header = () => {
                 value={form.searchterm} />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label className={styles.textColor}>Страна</Form.Label>
+              <Form.Label>Страна</Form.Label>
               <Form.Select
                 className="p-2"
                 placeholder="Выберете страну"
@@ -284,7 +285,7 @@ const Header = () => {
               </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label className={styles.textColor}>Жанр</Form.Label>
+              <Form.Label>Жанр</Form.Label>
               <SelectElement
                 onChange={handleGenresChange}
                 options={genres.map((genre, idx) => ({ value: genre.name, label: genre.name } as SelectOptionType))}
@@ -293,7 +294,7 @@ const Header = () => {
                 )}></SelectElement>
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label className={styles.textColor}>Год производства</Form.Label>
+              <Form.Label>Год производства</Form.Label>
               <RangeElement
                 max={new Date().getFullYear()}
                 min={2000}
@@ -303,7 +304,7 @@ const Header = () => {
                 onChange={handleYearChange}></RangeElement>
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label className={styles.textColor}>Рейтинг</Form.Label>
+              <Form.Label>Рейтинг</Form.Label>
               <RangeElement
                 max={10}
                 min={0}

@@ -1,8 +1,8 @@
 //const apiTocken = "7341R46-0RBM1RF-NQSMYD2-HBVV0DQ"
 //const apiTocken = "95Z8FG4-FRWMZGT-K9ZZ0PC-P853D4V"
 //const apiTocken = "ZYSDF6P-RR1M2M0-NPCSTNE-XRB3CDR"
-export const apiTocken = "16JBX74-FC6467V-N3A3EP2-C8ADFMJ";
-//export const apiTocken = "RD3R3VB-CWAM224-Q8CT51W-6PFHAFB";
+//export const apiTocken = "16JBX74-FC6467V-N3A3EP2-C8ADFMJ";
+export const apiTocken = "RD3R3VB-CWAM224-Q8CT51W-6PFHAFB";
 //export const apiTocken = "ZAEXZKF-RYRM40B-QRXAV1N-F1JX56B";
 //export const apiTocken = 'NCBXJG2-F1C47T5-NQE7THH-5C5ZDD7'
 import {

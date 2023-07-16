@@ -45,10 +45,10 @@ const SingUp = () => {
     const { email, password, username, confirmPassword } = form
     setFormErrors({
       ...formErrors,
-      password: !password ? 'Password is requed' : "",
-      email: !email ? 'email is requed' : "",
-      username: !username ? 'username is requed' : "",
-      confirmPassword: !password ? 'confirmPassword is requed' : password !== confirmPassword ? 'Passwords do not match' : "",
+      password: !password ? "Password is requed" : "",
+      email: !email ? "email is requed" : "",
+      username: !username ? "username is requed" : "",
+      confirmPassword: !password ? "confirmPassword is requed" : password !== confirmPassword ? "Passwords do not match" : "",
     })
 
     if (email && password && username && password === confirmPassword) {
@@ -62,7 +62,7 @@ const SingUp = () => {
     <div className="form-body d-flex align-items-center justify-content-center ">
       <div className="col-lg-4 col-md-6 col-sm-8 col-xs-10 border-0 bg-dark rounded p-3">
         <FormLayout
-          title={'Sign Up'} >
+          title={"Sign Up"} >
           <form onSubmit={onFormSubmit}>
             <div className="row">
               <div className="col">
@@ -127,7 +127,7 @@ const SingUp = () => {
                 Already have an account?
                 <Link
                   to={RoutesConstants.SignIn}
-                  className="ml-2">
+                  className="ml-2 text-decoration-none">
                   Sign In
                 </Link>
               </div>
