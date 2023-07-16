@@ -10,7 +10,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import MenuContextProvider from './Helpers/menuContext';
 import { store, persistor } from './Store';
 
 const root = ReactDOM.createRoot(
@@ -22,9 +21,7 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <MenuContextProvider>
             <App />
-          </MenuContextProvider>
         </BrowserRouter>
       </PersistGate>
     </Provider>

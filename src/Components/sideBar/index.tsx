@@ -24,7 +24,7 @@ const SideBar = () => {
 
   return (
     <>
-      <div className={[styles.sideBar, "flex-column flex-shrink-0 text-white sticky-top d-flex justify-content-between"].join(" ")} >
+      <div className={[styles.sideBar, "flex-column flex-shrink-0 sticky-top d-flex justify-content-between"].join(" ")} >
         <div>
           <ul className="nav nav-pills flex-column mb-auto">
             <li className="row gy-5">
@@ -50,10 +50,11 @@ const SideBar = () => {
             onClick={handleToggleTheme}>
             Переключить тему
           </Button>
-        </div>  
+          <span>© All rights reserved</span>
+        </div>
       </div>
-      
-      {/* <span>© All rights reserved</span> */}
+
+
     </>
 
   )
