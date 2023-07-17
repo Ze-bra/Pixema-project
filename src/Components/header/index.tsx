@@ -214,11 +214,13 @@ const Header = () => {
           <Col lg="2" sm="3" xs="3" className="align-self-start">
             <div>
               {!authentificationState.isAuthenticated &&
-                <Link to={RoutesConstants.SignIn} className="btn btn-primary text-right"> Войти</Link>
+                <Link to={RoutesConstants.SignIn} className="btn btn-primary text-right mt-2"> Войти</Link>
               }
               {authentificationState.isAuthenticated &&
                 <div className={styles.userName}>
-                  <span className={[styles.userNameLetter, "btn btn-primary"].join(" ")}>{getCutedName(authentificationState.user?.username ?? authentificationState.user?.email)}</span>
+                  <span className={[styles.userNameLetter, "btn btn-primary mt-2"].join(" ")}>
+                    {getCutedName(authentificationState.user?.username ?? authentificationState.user?.email)}
+                  </span>
                   <span className={styles.userNameWord}>
                     {authentificationState.user?.username ?? authentificationState.user?.email}
                   </span>
@@ -240,7 +242,7 @@ const Header = () => {
             <Form.Group
               className="mb-3"
               controlId="sortby">
-              <Form.Label>Сортировка по</Form.Label>
+              <Form.Label>Сортировка</Form.Label>
               <Row>
                 <ToggleButtonGroup
                   type="radio"
@@ -252,7 +254,7 @@ const Header = () => {
                     value="rating.kp"
                     variant="secondary"
                     onChange={handleSortValueChange}>
-                    Rating
+                    Рейтинг
                   </ToggleButton>
                   <ToggleButton
                     id="tbg-radio-2"
@@ -260,17 +262,17 @@ const Header = () => {
                     value="year"
                     variant="secondary"
                     onChange={handleSortValueChange}>
-                    Year
+                    Год
                   </ToggleButton>
                 </ToggleButtonGroup>
               </Row>
             </Form.Group>
             <hr />
             <Form.Group className="mb-3">
-              <Form.Label>Фильм или сериал</Form.Label>
+              <Form.Label>Название</Form.Label>
               <Form.Control
                 className="p-2"
-                placeholder="Фильм или сериал"
+                placeholder="Введите название"
                 onChange={handleSearchValueChange}
                 value={form.searchterm} />
             </Form.Group>
@@ -295,10 +297,12 @@ const Header = () => {
               <Form.Label>Жанр</Form.Label>
               <SelectElement
                 onChange={handleGenresChange}
+                placeholder="Выберете жанр"
                 options={genres.map((genre, idx) => ({ value: genre.name, label: genre.name } as SelectOptionType))}
                 value={form.genres.map((genre, idx) =>
                   ({ value: genre, label: genre } as SelectOptionType)
-                )}></SelectElement>
+                )
+                }></SelectElement>
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Год производства</Form.Label>

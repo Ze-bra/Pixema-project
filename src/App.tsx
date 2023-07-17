@@ -1,15 +1,15 @@
-import './App.module.scss';
-import { Route, Routes } from 'react-router-dom';
-import Layout from './Pages/Layout';
-import SingIn from './Pages/signIn';
-import { RoutesConstants } from './Constants/RouteConstants';
-import SingUp from './Pages/singUpPage';
-import { ActivatePage } from './Pages/activate';
-import SignUpConfirmation from './Pages/singUpConfirmation';
-import ActivationSuccess from './Pages/activationSuccess';
-import Films from './Pages/films';
-import LayoutAuthorization from './Pages/LayoutAuthorization';
-import { Film } from './Pages/film';
+import "./App.module.scss";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./Pages/Layout";
+import SingIn from "./Pages/signIn";
+import { RoutesConstants } from "./Constants/RouteConstants";
+import SingUp from "./Pages/singUpPage";
+import { ActivatePage } from "./Pages/activate";
+import SignUpConfirmation from "./Pages/singUpConfirmation";
+import ActivationSuccess from "./Pages/activationSuccess";
+import Films from "./Pages/films";
+import LayoutAuthorization from "./Pages/LayoutAuthorization";
+import { Film } from "./Pages/film";
 
 function App() {
   return (

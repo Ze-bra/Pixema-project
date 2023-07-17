@@ -43,8 +43,8 @@ const SingIn = () => {
         const { email, password } = form
         setFormErrors({
             ...formErrors,
-            password: !password ? "Password is requed" : "",
-            email: !email ? "email is requed" : "",
+            password: !password ? "Требуется пароль" : "",
+            email: !email ? "Требуется электронная почта" : "",
         })
 
         if (email && password) {
@@ -56,7 +56,7 @@ const SingIn = () => {
         <div className="form-body d-flex align-items-center justify-content-center ">
             <div className={[styles.box, "col-lg-4 col-md-6 col-sm-8 col-xs-10 border-0 rounded p-3"].join(" ")}>
                 <FormLayout
-                    title={"Sign In"}>
+                    title={"Войти"}>
                     <form onSubmit={onFormSubmit}>
                         <div className="row">
                             <div className="col">
@@ -64,8 +64,8 @@ const SingIn = () => {
                                     onChangeFunction={onChangeFormElement}
                                     name={"email"}
                                     type={"text"}
-                                    placeholder={"Your email"}
-                                    label={"Email"}
+                                    placeholder={"Ваша электронная почта"}
+                                    label={"Электронная почта"}
                                     value={""}
                                     component="TextBox"
                                     error={formErrors.email} />
@@ -76,8 +76,8 @@ const SingIn = () => {
                                 <FormElement onChangeFunction={onChangeFormElement}
                                     name={"password"}
                                     type={"password"}
-                                    placeholder={"Your password"}
-                                    label={"Password"}
+                                    placeholder={"Ваш пароль"}
+                                    label={"Пароль"}
                                     value={""}
                                     component="TextBox"
                                     error={formErrors.password} />
@@ -86,15 +86,15 @@ const SingIn = () => {
                         <div className="row">
                             <div className="col">
                                 <FormButton
-                                    text="Sign In"
+                                    text="Войти"
                                 />
                             </div>
                         </div>
                         <div className="row mb-3">
                             <div className="col">
-                                Don’t have an account?
+                                У вас нет аккаунта?
                                 <Link to={RoutesConstants.SignUp} className="ml-2 text-decoration-none ms-2">
-                                    Sign Up
+                                    Регистрация
                                 </Link>
                             </div>
                         </div>

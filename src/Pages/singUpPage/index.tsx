@@ -46,10 +46,10 @@ const SingUp = () => {
     const { email, password, username, confirmPassword } = form
     setFormErrors({
       ...formErrors,
-      password: !password ? "Password is requed" : "",
-      email: !email ? "email is requed" : "",
-      username: !username ? "username is requed" : "",
-      confirmPassword: !password ? "confirmPassword is requed" : password !== confirmPassword ? "Passwords do not match" : "",
+      password: !password ? "Требуется пароль" : "",
+      email: !email ? "Требуется электронная почта" : "",
+      username: !username ? "Требуется имя пользователя" : "",
+      confirmPassword: !password ? "Требуется подтверждение пароля" : password !== confirmPassword ? "Пароли не совпадают" : "",
     })
 
     if (email && password && username && password === confirmPassword) {
@@ -63,15 +63,15 @@ const SingUp = () => {
     <div className="form-body d-flex align-items-center justify-content-center ">
       <div className={[styles.box, "col-lg-4 col-md-6 col-sm-8 col-xs-10 border-0 rounded p-3"].join(" ")}>
         <FormLayout
-          title={"Sign Up"} >
+          title={"Регистрация"} >
           <form onSubmit={onFormSubmit}>
             <div className="row">
               <div className="col">
                 <FormElement
                   onChangeFunction={onChangeFormElement}
                   type={"text"}
-                  placeholder={"Your name"}
-                  label={"Name"}
+                  placeholder={"Ваше имя"}
+                  label={"Имя пользователя"}
                   value={""}
                   name={"username"}
                   component="TextBox"
@@ -83,8 +83,8 @@ const SingUp = () => {
                 <FormElement
                   onChangeFunction={onChangeFormElement}
                   type={"text"}
-                  placeholder={"Your email"}
-                  label={"Email"}
+                  placeholder={"Ваша электронная почта"}
+                  label={"Электронная почта"}
                   value={""}
                   name={"email"}
                   component="TextBox"
@@ -96,8 +96,8 @@ const SingUp = () => {
                 <FormElement
                   onChangeFunction={onChangeFormElement}
                   type={"password"}
-                  placeholder={"Your password"}
-                  label={"Password"}
+                  placeholder={"Ваш пароль"}
+                  label={"Пароль"}
                   value={""}
                   name={"password"}
                   component="TextBox"
@@ -109,8 +109,8 @@ const SingUp = () => {
                 <FormElement
                   onChangeFunction={onChangeFormElement}
                   type={"password"}
-                  placeholder={"Confirm password"}
-                  label={"Confirm password"}
+                  placeholder={"Подтвердите ваш пароль"}
+                  label={"Подтвердить пароль"}
                   value={""}
                   name={"confirmPassword"}
                   component="TextBox"
@@ -120,16 +120,16 @@ const SingUp = () => {
             <div className="row">
               <div className="col">
                 <FormButton
-                  text="Sign Up" />
+                  text="Регистрация" />
               </div>
             </div>
             <div className="row mb-3">
               <div className="col ">
-                Already have an account?
+                У вас уже есть аккаунт?
                 <Link
                   to={RoutesConstants.SignIn}
                   className="ml-2 text-decoration-none ms-2">
-                  Sign In
+                  Войти
                 </Link>
               </div>
             </div>

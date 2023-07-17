@@ -12,19 +12,19 @@ const ActivationSuccess = () => {
     <div className="form-body d-flex align-items-center justify-content-center ">
       <div className={[styles.box, "col-lg-6 col-md-8 col-sm-10 col-xs-12 border-0 rounded p-3"].join(" ")}>
         <FormLayout
-          title={"Activation work around"}>
+          title={"Активировано"}>
           <form className="">
             <div className="row mb-3">
               <div className="col ">
-                Email confirmed.
+                Электронная почта подтверждена.
                 <br />
-                Your registration is now completed
+                Ваша регистрация завершена
               </div>
             </div>
             <div className="row mb-3">
               <div className="col ">
                 <FormButton onClick={onClickNavigate}
-                  text="Go to home" />
+                  text="Главная станица" />
               </div>
             </div>
           </form>

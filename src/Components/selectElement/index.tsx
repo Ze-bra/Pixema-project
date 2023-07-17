@@ -13,6 +13,7 @@ const SelectElement = (props: SelectElementType) => {
       onChange={props.onChange}
       isMulti={true}
       options={props.options}
+      placeholder={props.placeholder}
       theme={(theme) => ({
         ...theme,
         colors: {

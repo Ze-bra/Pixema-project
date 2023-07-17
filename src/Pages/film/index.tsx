@@ -156,7 +156,7 @@ export const Film = () => {
                     </Row>
                     <Row className={styles.gap}>
                         <Col>
-                            <h3>Reccomendations</h3>
+                            {(sequelsAndPrequels.length > 0 || similarMovies.length > 0) && <h3>Рекомендации</h3>}
                         </Col>
                     </Row>
                     <Row sm={1} md={3} lg={4}>

@@ -3,3 +3,18 @@
     margin-right: 40px;
     margin-top: 125px;
 }
+
+.filmNotFound {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .filmNotFoundImg{
+        height: 350px;
+        aspect-ratio: 0.85;
+        object-fit: contain;
+    }
+}
