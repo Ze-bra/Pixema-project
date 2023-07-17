@@ -30,7 +30,8 @@ const FilmCard = (props: { film: MovieDtoV13 }) => {
             <Badge
                 bg="secondary"
                 className={styles.badgeYear}>
-                {props.film.year === undefined ? "" : props.film.year}</Badge>
+                {props.film.year === undefined ? "" : props.film.year}
+            </Badge>
             <Image
                 className={[styles.filmCardImg, "float-start"].join(' ')}
                 src={props.film.poster?.previewUrl}

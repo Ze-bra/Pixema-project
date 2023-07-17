@@ -24,7 +24,8 @@ const SideBar = () => {
 
   return (
     <>
-      <div className={[styles.sideBar, "flex-column flex-shrink-0 sticky-top d-flex justify-content-between"].join(" ")} >
+      <div className={[styles.sideBar,
+        "flex-column flex-shrink-0 sticky-top d-flex justify-content-between"].join(" ")} >
         <div>
           <ul className="nav nav-pills flex-column mb-auto">
             <li className="row gy-5">

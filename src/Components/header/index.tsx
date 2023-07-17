@@ -30,28 +30,38 @@ const Header = () => {
   const dictionariesState = useSelector((state: AppState) => state.dictionaries)
   const genres = useSelector((state: AppState) => dictionariesState.genres ?? "")
   const contries = useSelector((state: AppState) => dictionariesState.contries ?? "")
-  const themeState = useSelector((state: AppState) => state.siteSettings.theme) ?? "dark";
 
   const [form, setForm] = useState<FilmsSearchFilterType>(filtersState.filter)
   const [showFilters, setShowFilters] = useState(false);
 
-  //
   const handleCloseFilters = () => {
     setShowFilters(false)
     dispatch(setFilterAction(form))
   };
-  //
+
   const handleShowFilters = () => setShowFilters(true);
-  //
+
   const handleCloseBudge = (name: string, value: any) => {
-    setForm({ ...form, [name]: value })
-    dispatch(setFilterAction({ ...filtersState.filter, [name]: value }))
+    setForm({
+      ...form,
+      [name]: value
+    })
+    dispatch(setFilterAction({
+      ...filtersState.filter,
+      [name]: value
+    }))
     navigate(RoutesConstants.Home);
   }
-  //
+
   const handleSearchValueChangeHeader = (e: ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, searchterm: e.target.value.trim() === "" ? undefined : e.target.value })
-    dispatch(setFilterAction({ ...filtersState.filter, searchterm: e.target.value }))
+    setForm({
+      ...form,
+      searchterm: e.target.value.trim() === "" ? undefined : e.target.value
+    })
+    dispatch(setFilterAction({
+      ...filtersState.filter,
+      searchterm: e.target.value
+    }))
     navigate(RoutesConstants.Home);
   };
 
@@ -63,28 +73,45 @@ const Header = () => {
   }, []);
 
   const handleSearchValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, searchterm: e.target.value.trim() === "" ? undefined : e.target.value })
+    setForm({
+      ...form,
+      searchterm: e.target.value.trim() === "" ? undefined : e.target.value
+    })
   };
 
   const handleSortValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, sortingField: e.target.value as AllFields<MovieFields> })
+    setForm({
+      ...form,
+      sortingField: e.target.value as AllFields<MovieFields>
+    })
   };
 
   const handleContryChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setForm({ ...form, country: e.target.value })
+    setForm({
+      ...form,
+      country: e.target.value
+    })
   };
 
   const handleGenresChange = (newValue: MultiValue<SelectOptionType>, actionMeta: ActionMeta<SelectOptionType>) => {
-    setForm({ ...form, genres: newValue.map(x => x.value) })
-
+    setForm({
+      ...form,
+      genres: newValue.map(x => x.value)
+    })
   };
 
   const handleYearChange = (newValue: [number, number]) => {
-    setForm({ ...form, year: [newValue[0], newValue[1]] })
+    setForm({
+      ...form,
+      year: [newValue[0], newValue[1]]
+    })
   };
 
   const handleRatingChange = (newValue: [number, number]) => {
-    setForm({ ...form, rating: [newValue[0], newValue[1]] })
+    setForm({
+      ...form,
+      rating: [newValue[0], newValue[1]]
+    })
   };
 
   const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -94,7 +121,6 @@ const Header = () => {
     navigate(RoutesConstants.Home);
   }
 
-
   const getCutedName = function (userName: string | undefined) {
 
     if (!userName)
@@ -103,9 +129,7 @@ const Header = () => {
     let splitedUserName = userName.split(" ");
     if (splitedUserName.length > 1) {
       return (splitedUserName[0].substring(0, 1) + splitedUserName[1].substring(0, 1)).toUpperCase();
-
     }
-
     return splitedUserName[0].substring(0, 2).toUpperCase();
   }
 

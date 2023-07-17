@@ -106,50 +106,44 @@ export const Film = () => {
                         </Col>
                     </Row>
                     <Row className={styles.gap}>
-                        <Col md="2">Year</Col>
+                        <Col md="2">Год выпуска</Col>
                         <Col md="10">
                             {film.year}
                         </Col>
                     </Row>
                     <Row className={styles.gap}>
-                        <Col md="2">Realised</Col>
-                        <Col md="10">
-                            {film.year}
-                        </Col>
-                    </Row>
-                    <Row className={styles.gap}>
-                        <Col md="2">BoxOffice</Col>
+                        <Col md="2">Кассовый сбор</Col>
                         <Col md="10">
                             {film.budget?.currency} {film.budget?.value}
                         </Col>
                     </Row>
                     <Row className={styles.gap}>
-                        <Col md="2">Country</Col>
+                        <Col md="2">Страна</Col>
                         <Col md="10">
                             {film.countries?.map(x => x.name).join(", ")}
                         </Col>
                     </Row>
                     <Row className={styles.gap}>
-                        <Col md="2">Production</Col>
+                        <Col md="2">Киностудия</Col>
                         <Col md="10">
                             {film.productionCompanies?.map(x => x.name).join(", ")}
                         </Col>
                     </Row>
                     <Row className={styles.gap}>
-                        <Col md="2">Actors</Col>
+                        <Col md="2">Актеры</Col>
                         <Col md="10">
                             {film.persons?.filter(x => x.enProfession !== "producer" && x.enProfession !== "writer")
                                 .map(x => x.name ?? x.enName).join(", ")}
                         </Col>
                     </Row>
                     <Row className={styles.gap}>
-                        <Col md="2">Director</Col>
+                        <Col md="2">Продюсер</Col>
                         <Col md="10">{film.persons?.filter(x => x.enProfession === "producer")
                             .map(x => x.name ?? x.enName).join(", ")}
                         </Col>
                     </Row>
                     <Row className={styles.gap}>
-                        <Col md="2">Writers</Col>
+                        <Col md="2">Режиссер</Col>
                         <Col md="10">{film.persons?.filter(x => x.enProfession === "producer" || x.enProfession === "writer")
                             .map(x => x.name ?? x.enName).join(", ")}
                         </Col>

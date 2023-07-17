@@ -4,9 +4,10 @@ import pixema1 from "../../Content/img/pixema1.png"
 import { useSelector } from "react-redux";
 import { AppState } from "../../Store";
 import styles from "../logo/styles.module.scss";
+import { SwithColorThemeType } from "../../Type/SiteSettingsTypes";
 
 
-const Logo = (props: { swithColorTheme: boolean | undefined }) => {
+const Logo = (props: SwithColorThemeType) => {
 
     const themeState = useSelector((state: AppState) => state.siteSettings.theme) ?? "dark";
     const [logoSrc, setLogoSrc] = useState(pixema2);

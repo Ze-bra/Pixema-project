@@ -6,3 +6,7 @@ export type SiteSettingsActionType = {
     type: string;
     payload?: any
 }
+
+export type SwithColorThemeType = {
+    swithColorTheme: boolean | undefined
+}
